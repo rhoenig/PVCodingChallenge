@@ -1,0 +1,16 @@
+﻿@using PVCodeChallenge.Models
+
+@model EventTypeModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h3>Choose your Event:</h3>
+    @using (Html.BeginForm("EventType", "EventType", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <p><input type="submit" name="btnEventType" value="Register" /> &nbsp; &nbsp; <input type="submit" name="btnEventType" value="Diagnose" /></p>
+    }
+</div>

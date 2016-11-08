@@ -1,0 +1,31 @@
+﻿@using PVCodeChallenge.Models
+
+@model EventTypeModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h3>Choose your Event:</h3>
+    @using (Html.BeginForm("EventType", "EventType", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <p><input type="submit" name="btnEventType" value="Register" /> &nbsp; &nbsp; <input type="submit" name="btnEventType" value="Diagnose" /></p>
+
+        <div id="vwEvents" style="width: 30%; float:left;">
+            <label>Chosen Event</label> @ViewBag.EventChosen <br />
+            <label>Total Events</label> @ViewBag.TotalEvents
+            <ul style="list-style: none;">
+                @if (Model != null)
+                {
+                <!-- Cast the ViewBag to a collection of your specific ErrorCategory class and Iterate through each value in the Items collection of your ViewBag -->
+                    foreach (var evt in (Model.eventTypes as List<string>))
+                    {
+                        <li>@evt</li>
+                    }
+                }
+            </ul>
+        </div>
+    }
+</div>   
